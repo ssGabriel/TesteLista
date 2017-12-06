@@ -56,7 +56,7 @@ public class TestaCursoComAluno {
 		System.out.println(a);
 	}
 	
-	
+	System.out.println("Ok google");
 
 	
 	

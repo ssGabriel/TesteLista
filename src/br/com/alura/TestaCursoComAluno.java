@@ -44,17 +44,22 @@ public class TestaCursoComAluno {
 	Set<Aluno> alunos = curso.getAluno();
 	Iterator<Aluno> iterador = alunos.iterator();
 	iterador.hasNext();
+	
 	while(iterador.hasNext()) {
 		Aluno proximo = iterador.next();
 		System.out.println(proximo);
 	}
 	
-	Aluno depoisDoUltimo = iterador.next();
-	 
+
+	
+	
+	
 	
 	for(Aluno a : curso.getAluno()) {
 		System.out.println(a);
 	}
+	
+	
 	
 	System.out.println("Ok google");
 

@@ -2,8 +2,11 @@ package br.com.alura;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Curso {
@@ -11,7 +14,8 @@ public class Curso {
 	private String nome;
 	private String instrutor;
 	private List<Aula> aulas = new ArrayList<Aula>();
-	private Set<Aluno> alunos = new HashSet<>();
+	private Set<Aluno> alunos = new LinkedHashSet<>();
+	private Map<Integer,Aluno> matriculaParaAluno = new HashMap<>();
 	
 	
 	
@@ -31,6 +35,7 @@ public class Curso {
 	
 	public void adicionaAula (Aula aula) {
 		this.aulas.add(aula);
+		
 	}
 
 	public Curso(String nome, String instrutor){
@@ -40,6 +45,7 @@ public class Curso {
 	
 	public void adiciona(Aula aula) {
 		this.aulas.add(aula);
+		
 	}
 	
 	public int getTempoTotal() {
@@ -58,6 +64,7 @@ public class Curso {
 		
 		public void matriculaAluno(Aluno a) {
 			this.alunos.add(a);
+			this.matriculaParaAluno.put(a.getNumeroMatricula(), a);
 		}
 		
 		public Set<Aluno> getAluno(){
@@ -66,6 +73,12 @@ public class Curso {
 
 		public boolean estaMatriculado(Aluno a1) {
 			return this.alunos.contains(a1);
+		}
+
+		public Aluno buscaMatricula(int i) {
+			if(!matriculaParaAluno.containsKey(i))
+				throw new NoSuchElementException("Elemento não Existente");
+			return matriculaParaAluno.get(i);
 		}
 	}
 	
